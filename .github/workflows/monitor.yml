@@ -34,6 +34,8 @@ jobs:
           pip install requests
 
       - name: Run Crawler
+        env:
+          SCRAPINGBEE_API_KEY: ${{ secrets.SCRAPINGBEE_API_KEY }}
         run: python crawl.py
 
       - name: Generate HTML Dashboard
