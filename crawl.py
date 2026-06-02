@@ -1,21 +1,16 @@
 #!/usr/bin/env python3
 """
-Galaxus PDP Monitor – prüft ob "McDrogerie.ch" als Anbieter sichtbar ist.
-Speichert Ergebnisse in data/history.json und generiert das Dashboard.
+Galaxus PDP Monitor – via ScrapingBee API (umgeht Bot-Detection)
 """
 
-import json
-import os
-import re
-import sys
+import json, os, re, sys
 from datetime import datetime, timezone
 from pathlib import Path
-
-from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
-
-# ── Konfiguration ────────────────────────────────────────────────────────────
+import urllib.request
+import urllib.parse
 
 SEARCH_TEXT = "McDrogerie.ch"
+API_KEY = os.environ.get("SCRAPINGBEE_API_KEY", "")
 
 URLS = [
     "https://www.galaxus.ch/de/s7/product/hakle-toilettenpapier-30-stk-toilettenpapier-19412535",
@@ -42,151 +37,84 @@ URLS = [
 
 DATA_FILE = Path("data/history.json")
 
-
-# ── Hilfsfunktionen ──────────────────────────────────────────────────────────
-
-def extract_product_name(url: str) -> str:
-    """Extrahiert lesbaren Produktnamen aus der URL."""
+def extract_product_name(url):
     match = re.search(r"/product/(.+?)-(\d+)$", url)
-    if match:
-        slug = match.group(1).replace("-", " ").title()
-        return slug
-    return url
+    return match.group(1).replace("-", " ").title() if match else url
 
-
-def load_history() -> dict:
+def load_history():
     if DATA_FILE.exists():
         with open(DATA_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
     return {"runs": [], "products": {}}
 
-
-def save_history(history: dict):
+def save_history(history):
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=2)
 
-
-# ── Crawler ──────────────────────────────────────────────────────────────────
-
-def check_url(page, url: str) -> dict:
-    result = {
+def fetch_via_scrapingbee(url):
+    params = urllib.parse.urlencode({
+        "api_key": API_KEY,
         "url": url,
-        "name": extract_product_name(url),
-        "found": False,
-        "error": None,
-    }
+        "render_js": "true",          # JavaScript ausführen (wichtig für Galaxus)
+        "wait": "3000",               # 3 Sek. warten bis Seite geladen
+        "country_code": "ch",         # Schweizer IP
+        "premium_proxy": "true",      # Umgeht aggressive Bot-Detection
+    })
+    api_url = f"https://app.scrapingbee.com/api/v1/?{params}"
+    req = urllib.request.Request(api_url, headers={"Accept": "text/html"})
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        return resp.read().decode("utf-8", errors="replace")
+
+def check_url(url):
+    result = {"url": url, "name": extract_product_name(url), "found": False, "error": None}
     try:
-        page.goto(url, wait_until="domcontentloaded", timeout=30_000)
-        # Warte auf Hauptinhalt
-        page.wait_for_timeout(3000)
-        # Cookie-Banner wegklicken falls vorhanden
-        try:
-            page.click("button[data-testid='uc-accept-all-button']", timeout=3000)
-        except Exception:
-            pass
-        # Nochmal kurz warten nach Cookie-Dismiss
-        page.wait_for_timeout(1500)
-        content = page.content()
+        content = fetch_via_scrapingbee(url)
         result["found"] = SEARCH_TEXT in content
-    except PlaywrightTimeout:
-        result["error"] = "Timeout"
     except Exception as e:
         result["error"] = str(e)[:120]
     return result
 
-
-def run_crawl() -> list[dict]:
-    results = []
-    with sync_playwright() as p:
-        browser = p.chromium.launch(
-            headless=True,
-            args=[
-                "--no-sandbox",
-                "--disable-blink-features=AutomationControlled",
-            ],
-        )
-        context = browser.new_context(
-            user_agent=(
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/124.0.0.0 Safari/537.36"
-            ),
-            locale="de-CH",
-            viewport={"width": 1440, "height": 900},
-        )
-        page = context.new_page()
-        # Stealth: navigator.webdriver ausblenden
-        page.add_init_script(
-            "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
-        )
-
-        for i, url in enumerate(URLS):
-            print(f"[{i+1}/{len(URLS)}] Checking: {url}", flush=True)
-            result = check_url(page, url)
-            status = "✅ FOUND" if result["found"] else ("⚠️  ERROR" if result["error"] else "❌ NOT FOUND")
-            print(f"         {status}" + (f" ({result['error']})" if result["error"] else ""), flush=True)
-            results.append(result)
-
-        browser.close()
-    return results
-
-
-# ── Hauptprogramm ────────────────────────────────────────────────────────────
-
 def main():
+    if not API_KEY:
+        print("❌ SCRAPINGBEE_API_KEY nicht gesetzt!", flush=True)
+        sys.exit(1)
+
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     date_label = datetime.now(timezone.utc).strftime("%d.%m.%Y")
+    print(f"\n🔍 Galaxus PDP Monitor – {date_label}\n{'─'*50}", flush=True)
 
-    print(f"\n🔍 Galaxus PDP Monitor – {date_label}\n{'─'*50}")
-    results = run_crawl()
+    results = []
+    for i, url in enumerate(URLS):
+        print(f"[{i+1}/{len(URLS)}] {extract_product_name(url)}", flush=True)
+        result = check_url(url)
+        status = "✅ FOUND" if result["found"] else ("⚠️  ERROR" if result["error"] else "❌ NOT FOUND")
+        print(f"         {status}" + (f": {result['error']}" if result["error"] else ""), flush=True)
+        results.append(result)
 
     found_count = sum(1 for r in results if r["found"])
-    total = len(results)
-    print(f"\n{'─'*50}")
-    print(f"📊 Ergebnis: {found_count}/{total} PDPs zeigen '{SEARCH_TEXT}'")
+    print(f"\n{'─'*50}\n📊 {found_count}/{len(results)} PDPs sichtbar", flush=True)
 
-    # History laden und aktualisieren
     history = load_history()
-
-    run_entry = {
-        "timestamp": timestamp,
-        "date": date_label,
-        "found_count": found_count,
-        "total": total,
-        "details": results,
-    }
-    history["runs"].append(run_entry)
-
-    # Maximal 90 Tage History behalten
+    history["runs"].append({
+        "timestamp": timestamp, "date": date_label,
+        "found_count": found_count, "total": len(results), "details": results,
+    })
     history["runs"] = history["runs"][-90:]
 
-    # Produkt-Index aktualisieren (für schnellen Zugriff im Dashboard)
     history["products"] = {}
     for url in URLS:
-        name = extract_product_name(url)
-        history["products"][url] = {
-            "name": name,
-            "history": [],
-        }
-
+        history["products"][url] = {"name": extract_product_name(url), "history": []}
     for run in history["runs"]:
         for detail in run["details"]:
-            url = detail["url"]
-            if url in history["products"]:
-                history["products"][url]["history"].append({
-                    "date": run["date"],
-                    "timestamp": run["timestamp"],
-                    "found": detail["found"],
-                    "error": detail.get("error"),
+            if detail["url"] in history["products"]:
+                history["products"][detail["url"]]["history"].append({
+                    "date": run["date"], "timestamp": run["timestamp"],
+                    "found": detail["found"], "error": detail.get("error"),
                 })
 
     save_history(history)
-    print(f"💾 History gespeichert: {DATA_FILE}")
-
-    # Exit code 0 auch wenn nicht alle gefunden (kein CI-Fehler)
-    sys.exit(0)
-
+    print(f"💾 Gespeichert: {DATA_FILE}", flush=True)
 
 if __name__ == "__main__":
     main()
