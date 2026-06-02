@@ -1,0 +1,76 @@
+name: Galaxus PDP Monitor
+
+on:
+  schedule:
+    # Täglich um 07:00 UTC (= 08:00 oder 09:00 Schweizer Zeit)
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+    # Manuell ausführbar über GitHub UI (zum Testen)
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  crawl:
+    name: Crawl PDPs & Update Dashboard
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Vollständige History für git
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Python Dependencies
+        run: |
+          pip install playwright
+          python -m playwright install chromium
+          python -m playwright install-deps chromium
+
+      - name: Run Crawler
+        run: python crawl.py
+
+      - name: Generate HTML Dashboard
+        run: python generate_dashboard.py
+
+      - name: Commit updated data & dashboard
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/history.json docs/index.html
+          git diff --staged --quiet || git commit -m "🤖 Monitor update $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
+
+  # Optional: Deploy als GitHub Page (aktiviere Pages in Repo-Settings)
+  deploy-pages:
+    name: Deploy GitHub Pages
+    needs: crawl
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main  # Nach dem Crawl-Commit neu holen
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "docs"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
