@@ -31,9 +31,7 @@ jobs:
 
       - name: Install Python Dependencies
         run: |
-          pip install playwright
-          python -m playwright install chromium
-          python -m playwright install-deps chromium
+          pip install requests
 
       - name: Run Crawler
         run: python crawl.py
