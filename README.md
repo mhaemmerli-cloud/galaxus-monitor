@@ -30,8 +30,7 @@ Automatisches Monitoring ob **McDrogerie.ch** als Anbieter auf Galaxus Produktse
 - **Run workflow** klicken
 
 ### 5. Dashboard aufrufen
-Nach dem ersten Crawl erreichbar unter:
-`https://<dein-username>.github.io/<repo-name>/`
+Nach dem ersten Crawl erreichbar unter: https://mhaemmerli-cloud.github.io/galaxus-monitor/
 
 ## Dateien
 
