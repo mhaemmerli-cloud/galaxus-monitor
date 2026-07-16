@@ -5887,6 +5887,134 @@
           "error": "HTTP Error 401: UNAUTHORIZED"
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-16T09:11:21Z",
+      "date": "16.07.2026",
+      "found_count": 0,
+      "total": 20,
+      "details": [
+        {
+          "url": "https://www.galaxus.ch/de/s7/product/hakle-toilettenpapier-30-stk-toilettenpapier-19412535",
+          "name": "Hakle Toilettenpapier 30 Stk Toilettenpapier",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s7/product/reosal-regeneriersalz-fein-fest-geschirrspuelmittel-7945708",
+          "name": "Reosal Regeneriersalz Fein Fest Geschirrspuelmittel",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s7/product/bimbosan-bio-3-400-g-ab-12-monaten-saeuglingsnahrung-folgenahrung-15800448",
+          "name": "Bimbosan Bio 3 400 G Ab 12 Monaten Saeuglingsnahrung Folgenahrung",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s7/product/plenty-original-16x-haushaltspapier-19098775",
+          "name": "Plenty Original 16X Haushaltspapier",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s7/product/starwax-natriumcarbonat-reinigungsmittel-9357109",
+          "name": "Starwax Natriumcarbonat Reinigungsmittel",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s7/product/sponser-whey-protein-94-850-g-1x-neutral-proteinpulver-365141",
+          "name": "Sponser Whey Protein 94 850 G 1X Neutral Proteinpulver",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s6/product/stoeckli-atemschutzmaske-ffp2-ffp2-10x-mundschutz-22826172",
+          "name": "Stoeckli Atemschutzmaske Ffp2 Ffp2 10X Mundschutz",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s7/product/bimbosan-bio-2-400-g-ab-6-monaten-saeuglingsnahrung-folgenahrung-15800692",
+          "name": "Bimbosan Bio 2 400 G Ab 6 Monaten Saeuglingsnahrung Folgenahrung",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s6/product/tena-soft-wipe-intimtuecher-605-g-intimpflege-9471115",
+          "name": "Tena Soft Wipe Intimtuecher 605 G Intimpflege",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s7/product/ha-ra-bodenexpress-1-stk-reinigungsutensil-19571899",
+          "name": "Ha Ra Bodenexpress 1 Stk Reinigungsutensil",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s7/product/durgol-swiss-steamer-entkalker-3230314",
+          "name": "Durgol Swiss Steamer Entkalker",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s7/product/sponser-whey-isolate-94-850-g-1x-vanille-proteinpulver-9740790",
+          "name": "Sponser Whey Isolate 94 850 G 1X Vanille Proteinpulver",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s14/product/tempur-all-around-smartcool-50-x-60-cm-kopfkissen-36502373",
+          "name": "Tempur All Around Smartcool 50 X 60 Cm Kopfkissen",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s7/product/sonett-lavendel-67-waschgaenge-fluessig-waschmittel-textilpflege-15668031",
+          "name": "Sonett Lavendel 67 Waschgaenge Fluessig Waschmittel Textilpflege",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s4/product/bbt-brandschutzspray-antiflame-b-feuerloescher-12697491",
+          "name": "Bbt Brandschutzspray Antiflame B Feuerloescher",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s7/product/held-weichspueler-apfelbluete-mandel-33-waschgaenge-fluessig-waschmittel-textilpflege-8356072",
+          "name": "Held Weichspueler Apfelbluete Mandel 33 Waschgaenge Fluessig Waschmittel Textilpflege",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s10/product/multi-mam-kompressen-mamapflege-15678099",
+          "name": "Multi Mam Kompressen Mamapflege",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s4/product/gesal-unkrautvertilger-super-rapid-rtu-unkraut-pestizid-10029510",
+          "name": "Gesal Unkrautvertilger Super Rapid Rtu Unkraut Pestizid",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s6/product/casida-epsom-salz-badesalz-1000-g-badezusatz-11232971",
+          "name": "Casida Epsom Salz Badesalz 1000 G Badezusatz",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "url": "https://www.galaxus.ch/de/s7/product/sonett-waschmittel-lavendel-fluessig-waschmittel-textilpflege-15667739",
+          "name": "Sonett Waschmittel Lavendel Fluessig Waschmittel Textilpflege",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        }
+      ]
     }
   ],
   "products": {
@@ -6166,6 +6294,12 @@
         {
           "date": "15.07.2026",
           "timestamp": "2026-07-15T09:07:41Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
         }
@@ -6449,6 +6583,12 @@
           "timestamp": "2026-07-15T09:07:41Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
         }
       ]
     },
@@ -6728,6 +6868,12 @@
         {
           "date": "15.07.2026",
           "timestamp": "2026-07-15T09:07:41Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
         }
@@ -7011,6 +7157,12 @@
           "timestamp": "2026-07-15T09:07:41Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
         }
       ]
     },
@@ -7290,6 +7442,12 @@
         {
           "date": "15.07.2026",
           "timestamp": "2026-07-15T09:07:41Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
         }
@@ -7573,6 +7731,12 @@
           "timestamp": "2026-07-15T09:07:41Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
         }
       ]
     },
@@ -7852,6 +8016,12 @@
         {
           "date": "15.07.2026",
           "timestamp": "2026-07-15T09:07:41Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
         }
@@ -8135,6 +8305,12 @@
           "timestamp": "2026-07-15T09:07:41Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
         }
       ]
     },
@@ -8414,6 +8590,12 @@
         {
           "date": "15.07.2026",
           "timestamp": "2026-07-15T09:07:41Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
         }
@@ -8697,6 +8879,12 @@
           "timestamp": "2026-07-15T09:07:41Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
         }
       ]
     },
@@ -8976,6 +9164,12 @@
         {
           "date": "15.07.2026",
           "timestamp": "2026-07-15T09:07:41Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
         }
@@ -9259,6 +9453,12 @@
           "timestamp": "2026-07-15T09:07:41Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
         }
       ]
     },
@@ -9538,6 +9738,12 @@
         {
           "date": "15.07.2026",
           "timestamp": "2026-07-15T09:07:41Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
         }
@@ -9821,6 +10027,12 @@
           "timestamp": "2026-07-15T09:07:41Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
         }
       ]
     },
@@ -10100,6 +10312,12 @@
         {
           "date": "15.07.2026",
           "timestamp": "2026-07-15T09:07:41Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
         }
@@ -10383,6 +10601,12 @@
           "timestamp": "2026-07-15T09:07:41Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
         }
       ]
     },
@@ -10662,6 +10886,12 @@
         {
           "date": "15.07.2026",
           "timestamp": "2026-07-15T09:07:41Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
         }
@@ -10945,6 +11175,12 @@
           "timestamp": "2026-07-15T09:07:41Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
         }
       ]
     },
@@ -11226,6 +11462,12 @@
           "timestamp": "2026-07-15T09:07:41Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
         }
       ]
     },
@@ -11505,6 +11747,12 @@
         {
           "date": "15.07.2026",
           "timestamp": "2026-07-15T09:07:41Z",
+          "found": false,
+          "error": "HTTP Error 401: UNAUTHORIZED"
+        },
+        {
+          "date": "16.07.2026",
+          "timestamp": "2026-07-16T09:11:21Z",
           "found": false,
           "error": "HTTP Error 401: UNAUTHORIZED"
         }
